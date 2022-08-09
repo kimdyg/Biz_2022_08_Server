@@ -1,5 +1,6 @@
 package com.callor.todo.service.impl;
 
+import java.security.Principal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,8 +23,8 @@ public class MemoServiceImplV1 implements MemoService{
 	
 	@Override
 	public List<MemoDTO> selectAll() {
-		memoDao.selectAll();
-		return null;
+		
+		return memoDao.selectAll();
 	}
 
 	@Override
@@ -51,6 +52,12 @@ public class MemoServiceImplV1 implements MemoService{
 	@Override
 	public int delete(Long seq) {
 		return 0;
+	}
+
+	@Override
+	public List<MemoDTO> selectAllUser(String username) {
+		// TODO Auto-generated method stub
+		return memoDao.selectAllUser(username);
 	}
 
 }

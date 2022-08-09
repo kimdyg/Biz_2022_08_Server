@@ -16,5 +16,6 @@ public interface MemoDao {
 		public List<MemoDTO> findByAuthor(String author);
 		
 		public void create_memo_table();
+		public List<MemoDTO> selectAllUser(String username);
 
 }

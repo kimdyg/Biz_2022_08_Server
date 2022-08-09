@@ -10,6 +10,11 @@
  		WHERE m_author = #{m_author}
  	</select>
  
+ 	<select id="selectAllUser" resultType="MemoDTO">
+ 		SELECT * FROM tbl_memos
+ 		WHERE username
+ 		ORDER BY m_date
+ 	</select>
  	<select id="selectAll" resultType="MemoDTO">
  		SELECT * FROM tbl_memos
  		ORDER BY m_date
@@ -23,12 +28,14 @@
  			m_author,
  			m_date,
  			m_time,
- 			m_memo
+ 			m_memo,
+ 			username
  		) VALUES (
  			#{m_author},
  			#{m_date},
  			#{m_time},
- 			#{m_memo}
+ 			#{m_memo},
+ 			#{username}
  		)
  	</insert>
  	<update id="update" parameterType="MemoDTO">
@@ -37,6 +44,7 @@
  			m_date = #{m_date},
  			m_time = #{m_time},
  			m_memo = #{m_memo},
+ 			username = #{username}
  		WHERE m_seq = #{m_seq}
  	</update>
  	<delete id="delete">
@@ -51,8 +59,9 @@
  			m_author VARCHAR(25) NOT NULL,
  			m_date VARCHAR(10) NOT NULL,
  			m_time VARCHAR(10) NOT NULL,
- 			m_memo VARCHAR(40) NOT NULL
- 		)	
+ 			m_memo VARCHAR(40) NOT NULL,
+ 			username VARCHAR(20)
+ 		)
  	</select>
  	
  	

@@ -13,21 +13,21 @@
 <body>
 	<table class="memo">
 		<tr>
-			<th>SEQ</th>
+			<th>순번</th>
 			<th>작성일자</th>
 			<th>작성시각</th>
 			<th>메모</th>
+			<th>작성자</th>
+			<th>접속중인 아이디</th>
 		</tr>
-		<div>작성자 : ${MEMO.m_author}</div>
-	<div>작성일자 : ${MEMO.m_date}</div>
-	<div>작성시각 : ${MEMO.m_time}</div>
-	<div>메모 : ${MEMO.m_memo}</div>
 		<c:forEach items="${MEMOS}" var="MEMO" varStatus="INDEX">
 			<tr data-seq="${MEMO.m_seq}">
+				<td>${INDEX.count}</td>
 				<td>${MEMO.m_date}</td>
 				<td>${MEMO.m_time}</td>
 				<td>${MEMO.m_memo}</td>
-				<td>${INDEX.count}</td>
+				<td>${MEMO.m_author}</td>
+				<td>${MEMO.username}</td>
 			</tr>
 		</c:forEach>
 	</table>

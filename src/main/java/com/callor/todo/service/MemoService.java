@@ -8,6 +8,7 @@ public interface MemoService {
 
 
 	public List<MemoDTO> selectAll();
+	public List<MemoDTO> selectAllUser(String username);
 	public MemoDTO findById(Long seq);
 	public List<MemoDTO> findByAuthor(String username);
 	

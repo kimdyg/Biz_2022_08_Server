@@ -1,9 +1,9 @@
 package com.callor.todo.controller;
 
+import java.security.Principal;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 
 import javax.servlet.http.HttpSession;
 
@@ -28,14 +28,11 @@ public class TodoController {
 	}
 	
 	@RequestMapping(value = "/home", method = RequestMethod.GET)
-	public String home(Locale locale, Model model,HttpSession httpSession) {
+	public String home(Model model, Principal principal) {
 		
-		String username = (String) httpSession.getAttribute("USERNAME");
-		if(username != null) {
-			List<MemoDTO> memos = memoService.findByAuthor(username);
-			model.addAttribute("MEMOS", memos);
-			model.addAttribute("MEMO", memos);
-		}
+		List<MemoDTO> memoList = memoService.selectAllUser(principal.getName());
+		model.addAttribute("MEMOS", memoList);
+		model.addAttribute("MEMOS", memoService.selectAll());
 		return "/memo/home";
 	}
 	@RequestMapping(value="/insert",method=RequestMethod.GET)
@@ -50,7 +47,6 @@ public class TodoController {
 	public String insert(
 			@ModelAttribute("memo")
 			MemoDTO memo, 
-			
 			MultipartFile file,HttpSession httpSession) {
 		memoService.insert(memo);
 		

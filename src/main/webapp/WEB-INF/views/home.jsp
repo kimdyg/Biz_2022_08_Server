@@ -17,8 +17,8 @@
 
 <body>
 	<h1>나는나비 TodoList</h1>
-	<sec:authorize access="isAnonymous()">
 		<h3><a href="${rootPath}/memo/home">투두보기</a></h3>
+	<sec:authorize access="isAnonymous()">
 		<h3><a href="${rootPath}/user/login">로그인</a></h3>
 		<h3><a href="${rootPath}/user/join">회원가입</a></h3>
 	</sec:authorize>
